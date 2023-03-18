@@ -16,10 +16,9 @@ export default defineConfig({
   },
   define: {
     'process.env': {
-      BASE_API: 'http://localhost:3000' 
-    }
-    
-  }
+      BASE_API: 'https://api.dst.cool',
+    },
+  },
   // terserOptions: { 
   //   drop_console: true,
   //   drop_debugger: true,

@@ -40,13 +40,13 @@ onBeforeRouteLeave((to, from) => {
             <ErrorPage v-if="!List" />
             <Filter v-if="route.path == '/'" />
 
-            <div v-else="route.path != '/'" class="searchInfo  dark:text-white85 text-black85 text-3xl mr-10 shrink-0">
-                <div class="pb-2 text-4xl">
+            <div v-else="route.path != '/'" class="searchInfo col-span-5  dark:text-white85 text-black85  mr-10 shrink-0 mb-4">
+                <div class="pb-2 lg:text-4xl text-xl">
 
                     {{ route.path }}
                 </div>
 
-                <div class=" flex justify-start  align-center">
+                <div class=" flex justify-start  align-center lg:text-4xl text-xl">
 
 
                     {{ SearchKeyWord }}
