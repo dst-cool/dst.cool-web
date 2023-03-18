@@ -1,0 +1,48 @@
+<script setup>
+import {  RouterView } from 'vue-router'
+import mobile from "is-mobile";
+
+import Hearder from './components/Hearder.vue'
+import Footer from './components/Footer.vue'
+import FirstPage from './components/FirstPage.vue'
+
+import { ref } from 'vue';
+
+
+
+
+const isMobile = ref(mobile());
+
+
+
+</script>
+
+<template>
+  <FirstPage v-if="isMobile" />
+
+  <main class="main  flex flex-col  justify-start  items-center">
+
+    <!-- <button @click="toggleDark()">
+        <i inline-block align-middle i="dark:carbon-moon carbon-sun" />
+
+        <span class="ml-2 dark:text-white">{{ isDark ? 'Light' : 'Dark' }}</span>
+      </button> -->
+
+    <Hearder />
+
+
+    <RouterView />
+
+    <Footer />
+
+
+
+  </main>
+</template>
+
+<style scoped>
+.main {
+  min-height: 100vh;
+  padding: 0 1rem;
+}
+</style>

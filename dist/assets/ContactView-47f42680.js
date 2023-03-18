@@ -1,0 +1,1 @@
+import{_ as t,o as c,c as o,p as s,a as _,b as a}from"./index-169b1001.js";const n={},d=e=>(s("data-v-9190c4bb"),e=e(),_(),e),i={class:"contact"},p=d(()=>a("div",{class:"info dark:text-white55 text-4xl"}," on the way",-1)),r=[p];function l(e,h){return c(),o("div",i,r)}const f=t(n,[["render",l],["__scopeId","data-v-9190c4bb"]]);export{f as default};

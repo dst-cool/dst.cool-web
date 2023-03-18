@@ -1,0 +1,24 @@
+:root{
+    --white85:rgba(255, 255, 255, 0.85);
+    --white95:rgba(255, 255, 255, 0.95);
+
+    --black85:rgba(0, 0, 0, 0.85);
+    --black90:rgba(17,17,17);
+
+    --white55:rgba(255, 255, 255, 0.55);
+    --black55:rgba(0, 0, 0, 0.55);
+
+    --bg-color:#E1E1E1;
+    --header-transition--color:color 0.4s ease-in-out;
+
+    --footer-icon-color: var( --black85);
+    --card-mark-color:#E1E1E1;
+}
+
+
+.dark{
+    --bg-color:  black;
+    --footer-icon-color: var( --white85);
+    --card-mark-color:black;
+
+}
