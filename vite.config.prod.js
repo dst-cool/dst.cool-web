@@ -16,8 +16,9 @@ export default defineConfig({
   },
   define: {
     'process.env': {
-      BASE_API: 'http://localhost:3000'
+      BASE_API: 'http://localhost:3000' 
     }
+    
   }
   // terserOptions: { 
   //   drop_console: true,
