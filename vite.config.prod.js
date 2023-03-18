@@ -14,11 +14,11 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
-  // define: {
-  //   'process.env': {
-  //     BASE_API: 'http://localhost:3000',
-  //   },
-  // },
+  define: {
+    'process.env': {
+      BASE_API: 'http://localhost:3000',
+    },
+  },
   // terserOptions: { 
   //   drop_console: true,
   //   drop_debugger: true,
