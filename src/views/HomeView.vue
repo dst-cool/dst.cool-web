@@ -51,7 +51,6 @@ onBeforeRouteLeave((to, from) => {
                 <div class="pb-2 lg:text-4xl text-xl">
                     <div v-if="route.meta.card">
                         {{ route.path }}
-
                     </div>
 
                 </div>

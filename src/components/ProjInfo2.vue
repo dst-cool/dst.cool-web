@@ -47,7 +47,7 @@ const push = (key, Id) => {
 
 
         <div
-            class=" text-black55 dark:text-white55 proj-info-other flex justify-center items-center lg:items-start lg:justify-start text-base lg:text-lg">
+            class=" text-black55 dark:text-white55 proj-info-other flex justify-center items-start lg:items-start lg:justify-start text-base lg:text-lg">
             <div class="proj-info-other-title text-balck55  dark:text-white55 flex  flex-col items-start  ">
              
                 <div class="proj-info-other-title-item " >
