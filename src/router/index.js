@@ -79,8 +79,8 @@ const router = createRouter({
       },
     },
     {
-      path: '/cardtag',
-      name: 'cardtag',
+      path: '/filtertag',
+      name: 'filtertag',
       component: HomeView,
       meta: reactive({ position: "work", card: true }),
 

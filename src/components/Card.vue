@@ -21,7 +21,7 @@ const push = () => {
 const handleClick = (tagId) => {
 
 
-    router.push({ path: `/cardtag`, query: { "tagId": tagId } })
+    router.push({ path: `/tag`, query: { "tagId": tagId } })
 
   
 

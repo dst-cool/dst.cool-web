@@ -23,7 +23,7 @@ const { searchBycategory, searchByTag } = useProjStore()
 const clickTag = (tagId) => {
 
     
-    router.push({ path: `/tag`, query: { "tagId": tagId } })
+    router.push({ path: `/filtertag`, query: { "tagId": tagId } })
 }
 
 

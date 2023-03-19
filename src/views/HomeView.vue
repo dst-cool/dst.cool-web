@@ -41,15 +41,15 @@ onBeforeRouteLeave((to, from) => {
 
 
             <ErrorPage v-if="!List" />
-            <Filter v-if="route.path == '/' || route.path == '/tag'" />
+            <Filter v-if="route.path == '/' || route.path == '/filtertag'" />
 
 
 
 
-            <div v-if="route.path == '/cardtag'"
+            <div v-if="route.path != '/filtertag' && route.path != '/'"
                 class="searchInfo col-span-5  dark:text-white85 text-black85  mr-10 shrink-0 mb-4">
                 <div class="pb-2 lg:text-4xl text-xl">
-                    <div v-if="route.meta.card">
+                    <div >
                         {{ route.path }}
                     </div>
 
