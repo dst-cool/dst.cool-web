@@ -31,8 +31,8 @@ onMounted(async () => {
       const navList = document.querySelectorAll('.link-item')
 
       navList.forEach((e) => {
-            console.log(e.dataset.path)
-            console.log(route.meta.position)
+            // console.log(e.dataset.path)
+            // console.log(route.meta.position)
             if (e.dataset.path != route.meta.position) {
                 const isDark = document.getElementsByTagName('html')[0].classList.value.includes('dark')
                 if (!isDark) { e.style.color = `var(--black85)` }

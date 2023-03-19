@@ -11,7 +11,7 @@ const req = axios.create({
 req.interceptors.request.use(
 
     (c) => {
-        console.log(`req : ${c.url}  `, c)
+        // console.log(`req : ${c.url}  `, c)
         return c
     },
 
@@ -25,7 +25,7 @@ req.interceptors.request.use(
 req.interceptors.response.use(
 
     (res) => {
-        console.log(`res : ${res.status} `, res)
+        // console.log(`res : ${res.status} `, res)
         return res
 
     },

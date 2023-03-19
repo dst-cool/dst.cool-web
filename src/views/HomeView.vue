@@ -6,6 +6,7 @@ import { storeToRefs } from "pinia";
 import { onBeforeRouteLeave, onBeforeRouteUpdate, useRoute } from 'vue-router'
 import ErrorPage from "../components/404.vue";
 
+
 const { ListClone, SearchKeyWord, List } = storeToRefs(useProjStore())
 const { searchBycategory, resetList, searchByTag, searchByClient } = useProjStore()
 
@@ -36,14 +37,23 @@ onBeforeRouteLeave((to, from) => {
 
 <template>
     <transition name="fade" mode="out-in" appear>
-        <div class="container homeView    ">
+        <div class="container homeView  text-white   ">
+
+
             <ErrorPage v-if="!List" />
-            <Filter v-if="route.path == '/'" />
+            <Filter v-if="route.path == '/' || route.path == '/tag'" />
 
-            <div v-else="route.path != '/'" class="searchInfo col-span-5  dark:text-white85 text-black85  mr-10 shrink-0 mb-4">
+
+
+
+            <div v-if="route.path == '/cardtag'"
+                class="searchInfo col-span-5  dark:text-white85 text-black85  mr-10 shrink-0 mb-4">
                 <div class="pb-2 lg:text-4xl text-xl">
+                    <div v-if="route.meta.card">
+                        {{ route.path }}
 
-                    {{ route.path }}
+                    </div>
+
                 </div>
 
                 <div class=" flex justify-start  align-center lg:text-4xl text-xl">
@@ -54,7 +64,7 @@ onBeforeRouteLeave((to, from) => {
             </div>
 
 
-            <div class="col-span-5 lg:col-span-4">
+            <div class="col-span-5 " :class="route.path == '/cardtag'?'lg:col-span-5':'lg:col-span-4' ">
                 <div class="card-content w-full =">
                     <Card :projObj="projObj" v-for="(projObj, index)  in ListClone " :key="Date.now() + index">
                     </Card>
@@ -76,7 +86,7 @@ onBeforeRouteLeave((to, from) => {
 
 .homeView {
     @apply grid grid-cols-5;
-   
+
 
 
 }

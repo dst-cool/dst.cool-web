@@ -15,3 +15,5 @@ export const useCategoriesStore = defineStore('Filter', () => {
   }
   return { categories, categoriesInit }
 })
+
+

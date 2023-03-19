@@ -1,5 +1,5 @@
 <script setup>
-import { onBeforeMount } from 'vue';
+import { onBeforeMount ,onMounted} from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 
 import { useProjStore } from "../stores/proj";
@@ -12,15 +12,18 @@ const { projObj } = defineProps(['projObj'])
 const { FilterByTag, storeGetFiltedTag } = useProjStore()
 
 const push = () => {
-
     router.push({ path: `/work/${projObj.title}/${projObj._id}` })
-
 }
 
-const handleClick = (tagId) => {
-    console.log(`tagId=>`, tagId)
-    router.push({ path: `/tag`, query: { "tagId": tagId } })
 
+
+
+const handleClick = (tagId) => {
+
+
+    router.push({ path: `/cardtag`, query: { "tagId": tagId } })
+
+  
 
 }
 

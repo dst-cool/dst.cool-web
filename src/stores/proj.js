@@ -62,14 +62,14 @@ export const useProjStore = defineStore('projStore', () => {
 
       const all = [...clientsType, ...service]
 
-      console.log(id)
+
       let isIN = all.find(e => {
         if( e._id == id){  
           SearchKeyWord.value = e.name
         }
         return e._id == id
       })
-      console.log(isIN)
+   
       return isIN
     })
 
@@ -89,7 +89,7 @@ export const useProjStore = defineStore('projStore', () => {
         }
         return e._id == id
       })
-      console.log(isIN)
+  
       return isIN
     })
 
@@ -101,14 +101,14 @@ export const useProjStore = defineStore('projStore', () => {
     const filted = List.value.filter((e) => {
       const dsters = e.dsters
       let isIN = dsters.find(e => {
-        console.log( e._id, id)
+  
         if( e._id == id){  
           SearchKeyWord.value = e.name
         }
 
         return e._id == id
       })
-      console.log(isIN)
+     
       return isIN
     })
 

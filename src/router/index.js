@@ -5,6 +5,7 @@ import { useProjStore } from '../stores/proj'
 import { useCategoriesStore } from '../stores/Categories'
 
 import { useTheme } from "../utils/theme";
+import { reactive, ref } from 'vue'
 
 
 
@@ -54,7 +55,7 @@ const router = createRouter({
       path: '/tag',
       name: 'tag',
       component: HomeView,
-      meta: { position: "work" },
+      meta: reactive({ position: "work" }),
 
       beforeEnter: (to, from) => {
 
@@ -64,12 +65,38 @@ const router = createRouter({
         async function dd() {
           await isFirstLoading()
           console.log('加载完成')
-
+          console.log("meta----", to.meta.card)
           const tagId = to.query.tagId
           searchByTag(tagId)
 
         }
         dd()
+
+
+        return true
+      },
+    },
+    {
+      path: '/cardtag',
+      name: 'cardtag',
+      component: HomeView,
+      meta: reactive({ position: "work", card: true }),
+
+      beforeEnter: (to, from) => {
+
+        const { isFirstLoading } = useProjStore()
+        const { searchByTag } = useProjStore()
+
+        async function dd() {
+          await isFirstLoading()
+          console.log('加载完成')
+          console.log("meta----", to.meta.card)
+          const tagId = to.query.tagId
+          searchByTag(tagId)
+
+        }
+        dd()
+
 
         return true
       },

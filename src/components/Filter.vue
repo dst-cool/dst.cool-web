@@ -6,6 +6,9 @@ import { useRouter, useRoute } from 'vue-router';
 
 import { useCategoriesStore } from "../stores/Categories"
 import { useProjStore } from "../stores/proj"
+
+
+
 const router = useRouter()
 const route = useRoute()
 
@@ -19,6 +22,7 @@ const { searchBycategory, searchByTag } = useProjStore()
 
 const clickTag = (tagId) => {
 
+    
     router.push({ path: `/tag`, query: { "tagId": tagId } })
 }
 
@@ -44,15 +48,14 @@ const clickTag = (tagId) => {
 
         <div class="filter-category-content pb-10" v-for="(obj, index) in categories " :key="Date.now() + index">
             <span class="filter-category text-lg  block mb-5 font-bold">
-                {{ obj.name}}
+                {{ obj.name }}
             </span>
 
 
             <div class="filter-tabs  ">
-                <span @click="clickTag( tab._id)" class="filter-tab text-3xl" v-for="(tab, index) in obj.tags "
+                <span @click="clickTag(tab._id)" class="filter-tab text-3xl" v-for="(tab, index) in obj.tags "
                     :key="tab.name"> {{ tab.name }}
-                    <span class="self-line"
-                        :style="{ opacity: (route.query.tagId == tab._id) ? 'visibilit1y' : '0' }">
+                    <span class="self-line" :style="{ opacity: (route.query.tagId == tab._id) ? 'visibilit1y' : '0' }">
 
 
 
