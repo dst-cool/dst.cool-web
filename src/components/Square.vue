@@ -18,22 +18,22 @@
             <img  :src="obj.ossUrl" alt="">
         </div>
 
-
     </div>
+    
+    <!-- <div class="rect-col" v-if="data.value == 'col-2rect'">
+        <div class="innerBox" v-for="(obj, index) in  data.pic" :key="index">
+            <img v-if="index < 2" :src="obj.ossUrl" alt="">
+        </div>
+
+    </div> -->
+
     <div class="rect-col" v-if="data.value == 'col-2rect'">
         <div class="innerBox" v-for="(obj, index) in  data.pic" :key="index">
             <img v-if="index < 2" :src="obj.ossUrl" alt="">
         </div>
 
     </div>
-
-    <div class="rect-col" v-if="data.value == 'col-2rect'">
-        <div class="innerBox" v-for="(obj, index) in  data.pic" :key="index">
-            <img v-if="index < 2" :src="obj.ossUrl" alt="">
-        </div>
-
-    </div>
-    <div class="rect2 " v-if="data.value == 'rect2'">
+    <div class="rect2 " v-if="data.value == 'rect2' ">
         <div class="innerBox" v-for="(obj, index) in  data.pic" :key="index">
             <img v-if="index < 2" :src="obj.ossUrl" alt="">
         </div>
