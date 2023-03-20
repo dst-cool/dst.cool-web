@@ -63,7 +63,7 @@ onBeforeRouteLeave((to, from) => {
             </div>
 
 
-            <div class="col-span-5 " :class="route.path == '/cardtag'?'lg:col-span-5':'lg:col-span-4' ">
+            <div class="col-span-5 " :class="route.path != '/filtertag' && route.path != '/' ?'lg:col-span-5':'lg:col-span-4' ">
                 <div class="card-content w-full =">
                     <Card :projObj="projObj" v-for="(projObj, index)  in ListClone " :key="Date.now() + index">
                     </Card>
@@ -107,23 +107,24 @@ onBeforeRouteLeave((to, from) => {
     }
 }
 
-// @media (min-width: 1024px) {
-//     .card-content {
-//         // grid-template-columns: repeat(2, 1fr);
-//         grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+@media (min-width: 1024px) {
+    .card-content {
+        // grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
 
-//     }
-// }
+    }
+}
 
 @media (min-width: 1280px) {
     .card-content {
-        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
 }
 
 @media (min-width: 1536px) {
     .card-content {
-        grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+        // grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+        grid-template-columns: repeat(4, 1fr);
     }
 }
 

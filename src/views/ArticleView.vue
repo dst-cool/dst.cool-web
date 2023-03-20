@@ -17,8 +17,6 @@ import { useTheme } from "../utils/theme";
 
 
 
-
-
 onBeforeRouteLeave((to, from) => {
     const {restorBG} = useTheme()
     restorBG()

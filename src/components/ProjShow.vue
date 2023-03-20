@@ -1,4 +1,5 @@
 <template>
+ 
     <div v-if="curData" class="proj-show col-span-4 lg:col-span-3 flex flex-col item-start justify-center">
 
     
