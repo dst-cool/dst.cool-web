@@ -27,7 +27,7 @@
             <img v-if="index < 2" :src="obj.ossUrl||obj.url" alt="">
         </div>
 
-    </div>||obj.url
+    </div>
 
     <div class="rect-col" v-if="data.value == 'col-2rect'">
         <div class="innerBox" v-for="(obj, index) in  data.pic" :key="index">
