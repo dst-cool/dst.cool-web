@@ -1,13 +1,15 @@
 <template>
+
+
     <div class="rect " v-if="data.value == 'big-rect'">
         <div class="innerBox" :class="index >= 1 ? 'none' : ''" v-for="(obj, index) in  data.pic" :key="index">
-            <img :src="obj.ossUrl" alt="">
+            <img :src="obj.ossUrl||obj.url" alt="">
         </div>
 
     </div>
     <div class="square" v-if="data.value == 'big-square'">
         <div class="innerBox" :class="index >= 1 ? 'none' : ''" v-for="(obj, index) in  data.pic" :key="index">
-            <img :src="obj.ossUrl" alt="">
+            <img :src="obj.ossUrl||obj.url" alt="">
         </div>
 
 
@@ -15,27 +17,27 @@
 
     <div class="big-col " v-if="data.value == 'big-col'">
         <div class="innerBox"  :class="index >= 1 ? 'none' : ''" v-for="(obj, index) in  data.pic" :key="index">
-            <img  :src="obj.ossUrl" alt="">
+            <img  :src="obj.ossUrl||obj.url" alt="">
         </div>
 
     </div>
     
-    <!-- <div class="rect-col" v-if="data.value == 'col-2rect'">
+    <div class="small-square2"  v-if="data.value == 'small-square2'">
         <div class="innerBox" v-for="(obj, index) in  data.pic" :key="index">
-            <img v-if="index < 2" :src="obj.ossUrl" alt="">
+            <img v-if="index < 2" :src="obj.ossUrl||obj.url" alt="">
         </div>
 
-    </div> -->
+    </div>||obj.url
 
     <div class="rect-col" v-if="data.value == 'col-2rect'">
         <div class="innerBox" v-for="(obj, index) in  data.pic" :key="index">
-            <img v-if="index < 2" :src="obj.ossUrl" alt="">
+            <img v-if="index < 2" :src="obj.ossUrl||obj.url" alt="">
         </div>
 
     </div>
     <div class="rect2 " v-if="data.value == 'rect2' ">
         <div class="innerBox" v-for="(obj, index) in  data.pic" :key="index">
-            <img v-if="index < 2" :src="obj.ossUrl" alt="">
+            <img v-if="index < 2" :src="obj.ossUrl||obj.url" alt="">
         </div>
 
 
@@ -55,7 +57,7 @@ const { data } = props
 </script>
 
 <style lang="scss">
-.square2 {
+.small-square2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     overflow: hidden;
@@ -182,7 +184,6 @@ const { data } = props
         }
     }
 }
-
 
 
 .rect-col {
