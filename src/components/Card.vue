@@ -40,7 +40,7 @@ const handleClick = (tagId) => {
             <div class="card-pic-box  cursor-pointer">
                 <img :src="projObj.cover" alt="">
             </div>
-
+  
 
 
         </div>
