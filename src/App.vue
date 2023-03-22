@@ -1,26 +1,25 @@
 <script setup>
 import {  RouterView } from 'vue-router'
-import mobile from "is-mobile";
+
 
 import Hearder from './components/Hearder.vue'
 import Footer from './components/Footer.vue'
 import FirstPage from './components/FirstPage.vue'
 
-import { ref } from 'vue';
+
+import mobile from "is-mobile";
 
 
-
-
-const isMobile = ref(mobile());
-
+const isMobile = mobile();
 
 
 </script>
 
 <template>
   <FirstPage v-if="isMobile" />
+  
 
-  <main class="main  flex flex-col  justify-start  items-center">
+  <main class="main ">
 
     <!-- <button @click="toggleDark()">
         <i inline-block align-middle i="dark:carbon-moon carbon-sun" />
@@ -44,5 +43,7 @@ const isMobile = ref(mobile());
 .main {
   min-height: 100vh;
   padding: 0 1rem;
+
+  @apply  flex flex-col  justify-start  items-center
 }
 </style>

@@ -28,6 +28,8 @@ const router = createRouter({
 
       },
       meta: { position: "work" },
+     
+
 
     },
 
@@ -211,13 +213,14 @@ const router = createRouter({
   }
 })
 
+
+
+
 export default router
 
 
 router.beforeEach((to, from) => {
 
-  if (to.name == "home") { }
-  if (to.name == "contact") { }
 
 
 

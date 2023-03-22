@@ -1,65 +1,69 @@
-@import './base.css';
-@import './media.css';
-@import './var.css';
-
+@import "./base.css";
+@import "./media.css";
+@import "./var.css";
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
+.color85{
+  @apply dark:text-white85 text-black85
+}
+
+.color55{
+  @apply dark:text-white55 text-black55
+}
+.switchHidden{
+   @apply hidden lg:block
+}
+
+
+/* font */
 @font-face {
-    font-family: Dst;
-    src: url('../font/DSt.Tall.ttf') format('truetype');
-    font-weight: 400;
+  font-family: Dst;
+  src: url("https://pic.dst.cool/font/DSt.Tall.ttf") format("truetype");
+  font-weight: 400;
+}
+.font2 {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 }
 
 
-#app {
-    margin: 0 auto;
-    padding: 0 0;
-    font-weight: normal;
-    font-family: 'Dst';
-    /* background-color: black; */
-}
 
-.font2{
-  font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;
-}
 html {
-    background-color: var(--bg-color);
-    border: none;
-    transition:  background-color 0.4s ease-in-out;
+  background-color: var(--bg-color);
+  border: none;
+  transition: background-color 0.4s ease-in-out;
 }
 
+/* scroll */
 html::-webkit-scrollbar-track {
-    border: 1px solid white;
-    background-color: white;
-  }
-  
-  html::-webkit-scrollbar {
-    width: 10px;
-    background-color: white;
-  }
-  
-  html::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.85);
-  }
-  
-  
-  
-  
-  html.dark::-webkit-scrollbar-track {
-    border: 1px solid black;
-    background-color: #000000;
-  }
-  
-  html.dark::-webkit-scrollbar {
-    width: 10px;
-    background-color: #000000;
-  }
-  
-  html.dark::-webkit-scrollbar-thumb {
-    background-color: #F5F5F5;
-  }
-  
-  
+  border: 1px solid white;
+  background-color: white;
+}
+
+html::-webkit-scrollbar {
+  width: 10px;
+  background-color: white;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+/* dark mode  scroll*/
+html.dark::-webkit-scrollbar-track {
+  border: 1px solid black;
+  background-color: #000000;
+}
+
+html.dark::-webkit-scrollbar {
+  width: 10px;
+  background-color: #000000;
+}
+
+html.dark::-webkit-scrollbar-thumb {
+  background-color: #f5f5f5;
+}

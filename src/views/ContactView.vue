@@ -1,6 +1,6 @@
 <template>
     <div class="contact">
-        <div class="info dark:text-white55 text-4xl "> on the way</div>
+        <div class="info color55 text-4xl "> on the way ...</div>
     </div>
 </template>
 

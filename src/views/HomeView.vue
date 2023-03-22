@@ -84,7 +84,7 @@ onBeforeRouteLeave((to, from) => {
 
 
 .homeView {
-    @apply grid grid-cols-5;
+    @apply grid grid-cols-5 flex-grow grid-rows-1;
 
 
 

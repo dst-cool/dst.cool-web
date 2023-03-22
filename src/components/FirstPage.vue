@@ -122,7 +122,6 @@ onMounted(() => {
             class="scroll-button text-base flex flex-col items-center justify-start text-4xl cursor-pointer text-white55   ">
             <div> discover something</div>
 
-
             <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-xiala-"></use>
             </svg>
@@ -236,14 +235,8 @@ onMounted(() => {
     }
 
 }
-
 .type-position {
     font-size: 60px;
-
-    // top: 35%;
-    // // transform: translate(-50%, -50%);
-    // transform: translateY(-50%);
-    // left: 15%;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -256,7 +249,6 @@ onMounted(() => {
 .type-text-d {
     position: absolute;
     top: 35%;
-    // transform: translate(-50%, -50%);
     transform: translateY(-50%);
     height: 200px;
 
