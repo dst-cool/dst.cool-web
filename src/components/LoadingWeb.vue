@@ -28,6 +28,7 @@ const baseColorList = [
 ]
 let collap;
 let typed;
+let  animation
 
 const shuffle = (List) => {
   let array = JSON.parse(JSON.stringify(List));
@@ -49,9 +50,9 @@ const handleClick = () => {
 
   collap.play();
   typed.stop();
+  animation.unmounted()
 };
 
-let  animation
 onMounted(() => {
   document.querySelector(".main").style.display = "none";
 

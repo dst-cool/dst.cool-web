@@ -37,7 +37,7 @@ const handleClick = (tagId) => {
     <div class="card">
 
         <div class="card-pic  " @click="push()">
-            <div class="card-pic-box aspect-square cursor-pointer">
+            <div class="card-pic-box  cursor-pointer">
                 <img :src="projObj.cover" alt="">
             </div>
 
@@ -111,9 +111,15 @@ const handleClick = (tagId) => {
 
 .card-pic-box {
     overflow: hidden;
+    padding-bottom: 100%;
 
 
     img {
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
