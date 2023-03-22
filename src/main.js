@@ -1,11 +1,11 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import  './assets/iconfont.js';
+import  '@/assets/js/iconfont.js';
 
 import App from './App.vue'
 import router from './router'
 import mobile from "is-mobile";
-import './assets/css/main.css'
+import '@/assets/css/main.css'
 
 const app = createApp(App)
 

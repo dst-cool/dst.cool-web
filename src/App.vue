@@ -4,7 +4,8 @@ import {  RouterView } from 'vue-router'
 
 import Hearder from './components/Hearder.vue'
 import Footer from './components/Footer.vue'
-import FirstPage from './components/FirstPage.vue'
+import LoadingMoblie from './components/LoadingMoblie.vue'
+import LoadingWeb from './components/LoadingWeb.vue'
 
 
 import mobile from "is-mobile";
@@ -16,7 +17,8 @@ const isMobile = mobile();
 </script>
 
 <template>
-  <FirstPage v-if="isMobile" />
+  <LoadingMoblie v-if="isMobile" />
+  <LoadingWeb v-if="!isMobile" />
   
 
   <main class="main ">

@@ -4,7 +4,7 @@ import Typed from "typed.js";
 import { onMounted } from "vue";
 import anime from 'animejs/lib/anime.es.js';
 
-import IconScroll from "../components/icons/iconScroll.vue";
+import IconScroll from "./icons/iconScroll.vue";
 
 
 let ary = ["DSteam.", "Design Something.", "Design Store.", "DeSign talents.", "Dancing Sometimes.", "Dringking Sometime.", 'Dying Sometimes.']
@@ -134,7 +134,7 @@ onMounted(() => {
 </template>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .colorful-page {
     overflow: hidden;
     width: 100%;
