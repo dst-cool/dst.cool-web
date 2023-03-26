@@ -54,7 +54,7 @@ class ChangeGradientColor {
         this.initX = clientX;
         this.initY = clientY;
         this.setProgress(clientX, clientY)
-        console.log(this.distanceValue)
+        // console.log(this.distanceValue)
 
 
     }
@@ -144,7 +144,7 @@ class ChangeGradientColor {
 
         this.distanceValue > 100 ? this.distanceValue = 0 : this.distanceValue
         this.distanceValue > 0 && (this.distanceValue -= 1)
-        console.log(this.distanceValue)
+        // console.log(this.distanceValue)
 
         this.curColoList.forEach((e, index) => {
             // console.log(this)

@@ -1,11 +1,12 @@
 <script setup>
 import Typed from "typed.js";
-import { onMounted } from "vue";
+import { onMounted, vShow } from "vue";
 import anime from "animejs/lib/anime.es.js";
 import IconScroll from "./icons/iconScroll.vue";
 import ChangeGradientColor from "@/assets/js/loading.js";
+import _ from "lodash";
 
-console.log( ChangeGradientColor)
+console.log(ChangeGradientColor);
 let ary = [
   "DSteam.",
   "Design Something.",
@@ -18,17 +19,17 @@ let ary = [
 let Pre = ["DSt."];
 let finalAry;
 const baseColorList = [
-    "radial-gradient(at 18% 74%, hsla(127, 100%, 50%, 1) 0px, transparent 50%)",
-    "radial-gradient(at 13% 17%, hsla(176, 100%, 50%, 1) 0px, transparent 50%)",
-    "radial-gradient(at 50% 38%, hsla(46, 100%, 50%, 1) 0px, transparent 50%)",
-    "radial-gradient(at 89% 14%, hsla(236, 100%, 50%, 1) 0px, transparent 50%)",
-    "radial-gradient(at 56% 83%, hsla(20, 100%, 50%, 1) 0px, transparent 50%)",
-    "radial-gradient(at 88% 88%, hsla(269, 100%, 50%, 1) 0px, transparent 50%)",
-    "radial-gradient(at 73% 60%, hsla(356, 100%, 50%, 1) 0px, transparent 50%)"
-]
+  "radial-gradient(at 18% 74%, hsla(127, 100%, 50%, 1) 0px, transparent 50%)",
+  "radial-gradient(at 13% 17%, hsla(176, 100%, 50%, 1) 0px, transparent 50%)",
+  "radial-gradient(at 50% 38%, hsla(46, 100%, 50%, 1) 0px, transparent 50%)",
+  "radial-gradient(at 89% 14%, hsla(236, 100%, 50%, 1) 0px, transparent 50%)",
+  "radial-gradient(at 56% 83%, hsla(20, 100%, 50%, 1) 0px, transparent 50%)",
+  "radial-gradient(at 88% 88%, hsla(269, 100%, 50%, 1) 0px, transparent 50%)",
+  "radial-gradient(at 73% 60%, hsla(356, 100%, 50%, 1) 0px, transparent 50%)",
+];
 let collap;
 let typed;
-let  animation
+let animation;
 
 const shuffle = (List) => {
   let array = JSON.parse(JSON.stringify(List));
@@ -42,22 +43,23 @@ const shuffle = (List) => {
   let final = Pre.concat(res);
   return final;
 };
-// document.querySelector('.main').style.display = "flex"
-const handleClick = () => {
-  document.querySelector(".main").style.display = "flex";
-  document.querySelector(".scroll-button").style.display = "none";
-  document.querySelector(".type-position").style.opacity = 0;
 
-  collap.play();
-  typed.stop();
-  animation.unmounted()
+const HandleWheel = (event) => {
+  _.debounce(() => {
+    if (event.deltaY > 0) {
+      handleClick();
+    }
+  }, 300)();
 };
 
-onMounted(() => {
-  document.querySelector(".main").style.display = "none";
+const HandleResize = (e) => {
+  _.throttle(() => {
+    document.querySelector(".colorful-page").style.height =
+      window.innerHeight + "px";
+  }, 30)();
+};
 
-  finalAry = shuffle(ary);
-
+const setTyped = () => {
   typed = new Typed(".type-text-d", {
     strings: finalAry,
     typeSpeed: 30,
@@ -67,19 +69,17 @@ onMounted(() => {
     autoInsertCss: true,
     backDelay: 700,
 
-    onStart: (self) => {
-      console.log(self);
-    },
-    onStop: (self) => {
-      console.log(self);
-    },
+    onStart: (self) => {},
+    onStop: (self) => {},
     onBegin: (self) => {},
     onComplete: (self) => {
       finalAry = shuffle(ary);
       self.reset();
     },
   });
+};
 
+const setAnime = () => {
   collap = anime({
     targets: ".colorful-page",
     height: "6px",
@@ -92,19 +92,60 @@ onMounted(() => {
       const bg = document.querySelector(".colorful-page");
       bg.style.position = "fixed";
       bg.style.top = 0;
+      const linearBar  = document.querySelector(".linearBar");
+      // linearBar.style.display = "block";
+      linearBar.classList.add("linearBarShow");
+
+
+
     },
   });
+};
 
-  typed.start();
+const init = () => {
+  //baseStyle
+  document.querySelector(".main").style.display = "none";
 
-  animation =  new ChangeGradientColor(baseColorList, '.colorful-page')
+  const scrollElement = document.querySelector(".colorful-page");
 
+  scrollElement.addEventListener("wheel", HandleWheel);
+
+  window.addEventListener("resize", HandleResize);
+
+  setTyped();
+  setAnime();
+  animation = new ChangeGradientColor(baseColorList, ".colorful-page");
+};
+
+const unmounted = () => {
+  document
+    .querySelector(".colorful-page")
+    .removeEventListener("wheel", HandleWheel);
+  window.removeEventListener("resize", HandleResize);
+  typed.stop();
+  animation.unmounted();
+};
+
+const handleClick = () => {
+  document.querySelector(".main").style.display = "flex";
+  document.querySelector(".scroll-button").style.display = "none";
+  document.querySelector(".type-position").style.opacity = 0;
+  collap.play();
+  unmounted();
+};
+
+onMounted(() => {
+  finalAry = shuffle(ary);
+
+  init();
 });
 </script>
 
 <template>
   <div class="colorful-page text-white85">
     <div class="galss"></div>
+
+    <div class="linearBar"> </div>
     <div
       class="type-position container text-6xl font-bold md:text-7xl 2xl:text-8xl;"
     >
@@ -130,7 +171,7 @@ onMounted(() => {
   width: 100%;
   height: 100vh;
   position: relative;
-
+  z-index: 200;
   background-color: hsla(126, 100%, 48%, 0.4);
   padding: 0 1rem;
 
@@ -154,7 +195,7 @@ onMounted(() => {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   z-index: 100;
   filter: blur(10px);
 
@@ -210,5 +251,26 @@ onMounted(() => {
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+}
+
+.linearBar{
+  background-color: black;
+  width: 100%;
+  height: 6px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  background: linear-gradient(87deg, rgba(10,240,10,1) 3%, rgba(10,10,240,1) 22%, rgba(255,100,0,1) 38%, rgba(240,210,20,1) 55%, rgba(140,10,255,1) 74%, rgba(10,240,240,1) 96%);
+  // background-repeat: repeat-x;
+  z-index: 200;
+  opacity: 0;
+  transition: opacity ease-in-out 0.5s  ;
+}
+
+
+.linearBarShow{
+  opacity: 1;
+  
 }
 </style>

@@ -56,10 +56,10 @@ onMounted(() => {
         backDelay: 700,
 
         onStart: (self) => {
-            console.log(self)
+         
         },
         onStop: (self) => {
-            console.log(self)
+         
         },
         onBegin: (self) => {
 
@@ -73,7 +73,7 @@ onMounted(() => {
 
     collap = anime({
         targets: ".colorful-page",
-        height: '6px',
+        height: "6px",
         autoplay: false,
 
         duration: 500,
@@ -103,6 +103,7 @@ onMounted(() => {
 
 <template>
     <div class="colorful-page text-white85  ">
+        <div class="linearBar"> </div>
 
         <div class="type-position container text-6xl font-bold  md:text-7xl 2xl:text-8xl;">
 
@@ -121,7 +122,6 @@ onMounted(() => {
         <div @click="handleClick"
             class="scroll-button text-base flex flex-col items-center justify-start text-4xl cursor-pointer text-white55   ">
             <div> discover something</div>
-
             <svg class="icon" aria-hidden="true">
                 <use xlink:href="#icon-xiala-"></use>
             </svg>
@@ -292,5 +292,26 @@ onMounted(() => {
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
+}
+
+.linearBar{
+  background-color: black;
+  width: 100%;
+  height: 6px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+
+  background: linear-gradient(87deg, rgba(10,240,10,1) 3%, rgba(10,10,240,1) 22%, rgba(255,100,0,1) 38%, rgba(240,210,20,1) 55%, rgba(140,10,255,1) 74%, rgba(10,240,240,1) 96%);
+  // background-repeat: repeat-x;
+  z-index: 200;
+  opacity: 0;
+  transition: opacity ease-in-out 0.5s  ;
+}
+
+
+.linearBarShow{
+  opacity: 1;
+  
 }
 </style>

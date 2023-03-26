@@ -96,6 +96,9 @@ const push = (key, Id) => {
                         {{ item.name }}
                     </span>
                 </div>
+                <div>
+                    
+                </div>
 
 
                 <div class="proj-info-other-title-item cursor-pointer " v-for=" (item, index) in  ProjData.dsters"
