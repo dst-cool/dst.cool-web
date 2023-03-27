@@ -3,6 +3,7 @@ import Icon_Sina from "./icons/Icon_Sina.vue";
 import Icon_Ins from "./icons/Icon_Ins.vue";
 import Icon_Group from "./icons/Icon_Group.vue";
 import Icon_Email from "./icons/Icon_Email.vue";
+import Icon_Dark from "./icons/Icon_Dark.vue";
 
 </script>
 
@@ -15,6 +16,7 @@ import Icon_Email from "./icons/Icon_Email.vue";
         <Icon_Ins />
         <Icon_Group />
         <Icon_Email />
+        <Icon_Dark />
       </div>
     </div>
     <div class="footer-bottom">
@@ -27,7 +29,9 @@ import Icon_Email from "./icons/Icon_Email.vue";
 
 <style lang="scss" scoped>
 .footer {
-  @apply py-2 mt-20;
+
+  padding-bottom: env(safe-area-inset-bottom);
+  @apply pt-2 mt-20;
   &-top {
     @apply 
     border-b-2  

@@ -61,7 +61,7 @@ const handleClick = (tagId) => {
 
                 </div>
 
-                <span class="mx-2 " v-if="(projObj.service.length != 0 || index != projObj.clientsType.length - 1)">|</span>
+                <span class="mx-1 " v-if="(projObj.service.length != 0 || index != projObj.clientsType.length - 1)">|</span>
 
 
 

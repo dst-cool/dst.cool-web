@@ -7,7 +7,7 @@ import { onBeforeRouteLeave } from 'vue-router'
 
 import ProjInfo from "../components/ProjInfo.vue";
 import ProjShow from "../components/ProjShow.vue";
-import ProjInfo2 from "../components/ProjInfo2.vue";
+import ProjInfoBottom from "../components/ProjInfoBottom.vue";
 
 
 import { useTheme } from "../utils/theme";
@@ -41,7 +41,7 @@ onBeforeRouteLeave((to, from) => {
             <ProjShow />
        
 
-            <ProjInfo2 />
+            <ProjInfoBottom />
 
 
 

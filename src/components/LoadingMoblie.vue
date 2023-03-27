@@ -3,7 +3,7 @@
 import Typed from "typed.js";
 import { onMounted } from "vue";
 import anime from 'animejs/lib/anime.es.js';
-
+import _ from "lodash";
 import IconScroll from "./icons/iconScroll.vue";
 
 
@@ -15,7 +15,13 @@ let finalAry
 let collap
 let typed
 
-
+const HandleResize = (e) => {
+    console.log('resize')
+  _.throttle(() => {
+    document.querySelector(".colorful-page").style.height =
+      window.innerHeight + "px";
+  }, 30)();
+};
 
 const shuffle = (List) => {
     let array = JSON.parse(JSON.stringify(List));
@@ -33,6 +39,7 @@ const handleClick = () => {
     document.querySelector('.main').style.display = "flex"
     document.querySelector('.scroll-button').style.display = "none"
     document.querySelector('.type-position').style.opacity = 0
+    window.removeEventListener("resize", HandleResize);
 
     collap.play()
     typed.stop()
@@ -70,7 +77,7 @@ onMounted(() => {
         }
     });
 
-
+    window.addEventListener("resize", HandleResize);
     collap = anime({
         targets: ".colorful-page",
         height: "6px",
