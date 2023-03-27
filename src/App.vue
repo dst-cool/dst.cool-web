@@ -9,8 +9,6 @@ import LoadingWeb from "./components/LoadingWeb.vue";
 import mobile from "is-mobile";
 
 const isMobile = mobile();
-
-
 </script>
 
 <template>

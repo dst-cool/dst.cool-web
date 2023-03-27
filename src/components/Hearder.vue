@@ -14,7 +14,6 @@ const rgbRandom = () => {
   return `rgb(${r},${g},${b})`;
 };
 
-
 onMounted(async () => {
   await router.isReady();
   console.log("route.path", route.path);
@@ -58,14 +57,14 @@ onMounted(() => {
   navList.forEach((e) => {
     e.onmouseout = () => {
       clearInterval(interval);
-      console.log(e.dataset.path, route.meta.position);
+
       if (e.dataset.path == route.meta.position) {
         e.style.color = rgbRandom();
       } else {
-        if (isDark) {
+        if (isDark.value) {
           e.style.color = `var(--white85)`;
         }
-        if (!isDark) {
+        if (!isDark.value) {
           e.style.color = `var(--black85)`;
         }
       }
@@ -95,6 +94,17 @@ watch(route, () => {
     }
   });
 });
+
+watch(isDark, (o, n) => {
+  const navList = document.querySelectorAll(".header-tabs-link ");
+  navList.forEach((e) => {
+    if (e.dataset.path != route.meta.position) {
+      isDark.value
+        ? (e.style.color = `var(--white85)`)
+        : (e.style.color = `var(--black85)`);
+    }
+  });
+});
 </script>
 
 <template>
@@ -108,18 +118,12 @@ watch(route, () => {
         <RouterLink
           class="header-tabs-link"
           data-path="work"
-       
           name="home"
           to="/"
         >
           works
         </RouterLink>
-        <RouterLink
-          class="header-tabs-link"
-          data-path="contact"
-         
-          to="/contact"
-        >
+        <RouterLink class="header-tabs-link" data-path="contact" to="/contact">
           contact
         </RouterLink>
       </div>
@@ -135,8 +139,7 @@ watch(route, () => {
     transition: var(--header-transition--color);
     user-select: none;
 
-    @apply 
-        text-6xl 
+    @apply text-6xl 
         flex 
         items-center 
         justify-center 
@@ -149,8 +152,7 @@ watch(route, () => {
   }
 
   .header-tabs {
-    @apply 
-        text-2xl 
+    @apply text-2xl 
         
         flex 
         uppercase 
