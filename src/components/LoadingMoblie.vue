@@ -85,6 +85,7 @@ onMounted(() => {
             const bg = document.querySelector(".colorful-page")
             bg.style.position = 'fixed'
             bg.style.top = 0
+            document.querySelector('.linearBar').classList.add('linearBarShow')
 
         }
     })
