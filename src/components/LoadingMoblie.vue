@@ -312,7 +312,7 @@ onMounted(() => {
 
   background: linear-gradient(87deg, rgba(10,240,10,1) 3%, rgba(10,10,240,1) 22%, rgba(255,100,0,1) 38%, rgba(240,210,20,1) 55%, rgba(140,10,255,1) 74%, rgba(10,240,240,1) 96%);
   // background-repeat: repeat-x;
-  z-index: 200;
+  z-index: 2000;
   opacity: 0;
   transition: opacity ease-in-out 0.5s  ;
 }
