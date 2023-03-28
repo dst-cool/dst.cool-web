@@ -54,6 +54,7 @@ const darkTimeline = anime.timeline({
 });
 
 const changeMode = () => {
+  
   darkTimeline.play();
 };
 
@@ -61,13 +62,13 @@ onMounted(() => {
   darkTimeline
     .add({
       targets: ".dark-icon",
-      rotate: [-45,675],
+      rotate: [-45, 675],
       duration: 250,
     })
     .add(
       {
         targets: ".dark-icon",
-        filter: "blur(5px)",
+        opacity: 0.5,
         duration: 125,
         easing: "linear",
       },
@@ -76,9 +77,9 @@ onMounted(() => {
     .add(
       {
         targets: ".dark-icon",
-        filter: "blur(0px)",
+        opacity: 1,
         duration: 125,
-        easing: "linear",
+        easing: "steps(2)",
       },
       125
     );

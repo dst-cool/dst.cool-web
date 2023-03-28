@@ -28,7 +28,7 @@ const push = (key, Id) => {
 <template>
   <div
     v-if="ProjData"
-    class="lg:col-span-1 proj-info flex flex-col justify-center items-start lg:block"
+    class="lg:col-span-1 proj-info flex flex-col justify-center items-start lg:flex"
   >
     <div
       class="flex justify-start text-black55 proj-info-title dark:text-white55 lg:text-3xl text-3xl lg:mb-10 mb-4"
@@ -128,6 +128,9 @@ const push = (key, Id) => {
 <style lang="scss" scoped>
 .proj-info {
   min-width: 0;
+  align-self: start;
+    position: sticky;
+  top: 20vh;
 }
 
 .proj-info .info {
