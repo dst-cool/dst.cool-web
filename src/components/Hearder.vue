@@ -86,7 +86,7 @@ onMounted(async () => {
   });
 
 
-  setTyped();
+  // setTyped();
 });
 
 onMounted(() => {
