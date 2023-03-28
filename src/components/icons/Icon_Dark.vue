@@ -61,7 +61,7 @@ onMounted(() => {
   darkTimeline
     .add({
       targets: ".dark-icon",
-      rotate: 360,
+      rotate: [-45,675],
       duration: 250,
     })
     .add(

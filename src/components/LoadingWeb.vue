@@ -92,12 +92,9 @@ const setAnime = () => {
       const bg = document.querySelector(".colorful-page");
       bg.style.position = "fixed";
       bg.style.top = 0;
-      const linearBar  = document.querySelector(".linearBar");
+      const linearBar = document.querySelector(".linearBar");
       // linearBar.style.display = "block";
       linearBar.classList.add("linearBarShow");
-
-
-
     },
   });
 };
@@ -137,6 +134,7 @@ const handleClick = () => {
 onMounted(() => {
   finalAry = shuffle(ary);
 
+ 
   init();
 });
 </script>
@@ -145,7 +143,9 @@ onMounted(() => {
   <div class="colorful-page text-white85">
     <div class="galss"></div>
 
-    <div class="linearBar"> </div>
+
+
+    <div class="linearBar"></div>
     <div
       class="type-position container text-6xl font-bold md:text-7xl 2xl:text-8xl;"
     >
@@ -253,7 +253,7 @@ onMounted(() => {
   overflow: hidden;
 }
 
-.linearBar{
+.linearBar {
   background-color: black;
   width: 100%;
   height: 6px;
@@ -261,16 +261,22 @@ onMounted(() => {
   bottom: 0;
   left: 0;
 
-  background: linear-gradient(87deg, rgba(10,240,10,1) 3%, rgba(10,10,240,1) 22%, rgba(255,100,0,1) 38%, rgba(240,210,20,1) 55%, rgba(140,10,255,1) 74%, rgba(10,240,240,1) 96%);
+  background: linear-gradient(
+    87deg,
+    rgba(10, 240, 10, 1) 3%,
+    rgba(10, 10, 240, 1) 22%,
+    rgba(255, 100, 0, 1) 38%,
+    rgba(240, 210, 20, 1) 55%,
+    rgba(140, 10, 255, 1) 74%,
+    rgba(10, 240, 240, 1) 96%
+  );
   // background-repeat: repeat-x;
   z-index: 200;
   opacity: 0;
-  transition: opacity ease-in-out 0.5s  ;
+  transition: opacity ease-in-out 0.5s;
 }
 
-
-.linearBarShow{
+.linearBarShow {
   opacity: 1;
-  
 }
 </style>

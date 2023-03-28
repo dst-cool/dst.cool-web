@@ -1,8 +1,15 @@
 <script setup>
 import { useDark } from "@vueuse/core";
-import { watch, ref, onMounted } from "vue";
+import { watchEffect, ref, onMounted ,computed,watch} from "vue";
 import { useRouter, useRoute } from "vue-router";
 import Typed from "typed.js";
+import { storeToRefs } from "pinia";
+
+import { useProjStore } from "../stores/proj";
+
+const { ProjData } = storeToRefs(useProjStore());
+const dst = computed(() => ProjData.value);
+
 
 const isDark = useDark();
 const router = useRouter();
@@ -38,58 +45,66 @@ const shuffle = (List) => {
   return final;
 };
 
-const setTyped = () => {
- new Typed(".header-name-type", {
-    strings: shuffle( ary),
-    typeSpeed: 60,
+let curTyped = null;
+
+const setTyped = (data) => {
+  curTyped = new Typed(".header-name-type", {
+    strings: shuffle(data),
+    typeSpeed: 90,
     smartBackspace: true,
     showCursor: false,
     cursorChar: "|",
-    autoInsertCss: true,
-    backDelay: 700,
+    autoInsertCss: false,
+    backDelay: 1400,
+    loop: true,
 
     onStart: (self) => {},
     onStop: (self) => {},
     onBegin: (self) => {},
     onComplete: (self) => {
-     
       // self.reset();
     },
   });
 };
 
-onMounted(async () => {
-  await router.isReady();
-  console.log("route.path", route.path);
+const changeColorIndarkMode = () => {
   const navList = document.querySelectorAll(".header-tabs-link ");
-
   navList.forEach((e) => {
-    // console.log(e.dataset.path)
-    // console.log(route.meta.position)
     if (e.dataset.path != route.meta.position) {
-      const isDark = document
-        .getElementsByTagName("html")[0]
-        .classList.value.includes("dark");
-      if (!isDark) {
-        e.style.color = `var(--black85)`;
-      }
-      if (isDark) {
-        e.style.color = `var(--white85)`;
-      }
+      isDark.value
+        ? (e.style.color = `var(--white85)`)
+        : (e.style.color = `var(--black85)`);
     }
     if (e.dataset.path == route.meta.position) {
-      const isDark = document
-        .getElementsByTagName("html")[0]
-        .classList.value.includes("dark");
       e.style.color = rgbRandom();
     }
   });
+};
 
-
-  // setTyped();
+watch(route, () => {
+  changeColorIndarkMode();
+ 
 });
 
-onMounted(() => {
+watchEffect(() => {
+  if (
+    route.name == "ArticleView" &&
+    ProjData.value &&
+    ProjData.value.dst.length > 0
+  ) {
+    setTyped(ProjData.value.dst);
+  } else if(curTyped ){
+    curTyped.destroy();
+    document.querySelector('.header-name-type').innerHTML = 'DSt.'
+
+  }
+    });
+
+watch(isDark, (o, n) => {
+  changeColorIndarkMode();
+});
+
+const bindMouseEvent = () => {
   const navList = document.querySelectorAll(".header-tabs-link ");
   let interval = null;
 
@@ -99,58 +114,27 @@ onMounted(() => {
         e.style.color = rgbRandom();
       }, 150);
     };
-  });
-
-  navList.forEach((e) => {
     e.onmouseout = () => {
       clearInterval(interval);
-
+      if (e.dataset.path != route.meta.position) {
+        isDark.value
+          ? (e.style.color = `var(--white85)`)
+          : (e.style.color = `var(--black85)`);
+      }
       if (e.dataset.path == route.meta.position) {
         e.style.color = rgbRandom();
-      } else {
-        if (isDark.value) {
-          e.style.color = `var(--white85)`;
-        }
-        if (!isDark.value) {
-          e.style.color = `var(--black85)`;
-        }
       }
     };
   });
+};
+onMounted(() => {
+  bindMouseEvent();
 });
 
-watch(route, () => {
-  console.log(route);
-  const navList = document.querySelectorAll(".header-tabs-link ");
-  navList.forEach((e) => {
-    if (e.dataset.path != route.meta.position) {
-      if (!isDark) {
-        e.style.color = `var(--black85)`;
-      }
-      if (isDark) {
-        e.style.color = `var(--white85)`;
-      }
-    }
-    if (e.dataset.path == route.meta.position) {
-      if (!isDark) {
-        e.style.color = rgbRandom();
-      }
-      if (isDark) {
-        e.style.color = rgbRandom();
-      }
-    }
-  });
-});
-
-watch(isDark, (o, n) => {
-  const navList = document.querySelectorAll(".header-tabs-link ");
-  navList.forEach((e) => {
-    if (e.dataset.path != route.meta.position) {
-      isDark.value
-        ? (e.style.color = `var(--white85)`)
-        : (e.style.color = `var(--black85)`);
-    }
-  });
+onMounted(async () => {
+  await router.isReady();
+  console.log("route.path", route.path);
+  changeColorIndarkMode();
 });
 </script>
 
@@ -158,7 +142,7 @@ watch(isDark, (o, n) => {
   <div class="container">
     <div class="header">
       <div class="header-name" @click="router.push('/')">
-        <span  class="header-name-type">DSt.</span>
+        <span class="header-name-type">DSt.</span>
       </div>
 
       <div class="header-tabs color85">
@@ -185,16 +169,24 @@ watch(isDark, (o, n) => {
   .header-name {
     transition: var(--header-transition--color);
     user-select: none;
-&-type::after{
+    width: 100%;
+    overflow: hidden;
+    display: flex;
 
-  content: '1';
-visibility: hidden;
-
-}
+    &-type {
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    &-type::after {
+      content: "1";
+      visibility: hidden;
+    }
     @apply text-6xl 
         flex 
         items-center 
-        justify-center 
+        justify-start 
         md:text-7xl 
         2xl:text-8xl
         cursor-pointer

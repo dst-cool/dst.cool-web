@@ -16,12 +16,6 @@ const isMobile = mobile();
   <LoadingWeb v-if="!isMobile" />
 
   <main class="main">
-    <!-- <button @click="toggleDark()">
-        <i inline-block align-middle i="dark:carbon-moon carbon-sun" />
-
-        <span class="ml-2 dark:text-white">{{ isDark ? 'Light' : 'Dark' }}</span>
-      </button> -->
-
     <Hearder />
 
     <RouterView />
