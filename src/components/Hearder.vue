@@ -1,6 +1,6 @@
 <script setup>
 import { useDark } from "@vueuse/core";
-import { watchEffect, ref, onMounted ,computed,watch} from "vue";
+import { watchEffect, ref, onMounted, computed, watch } from "vue";
 import { useRouter, useRoute } from "vue-router";
 import Typed from "typed.js";
 import { storeToRefs } from "pinia";
@@ -9,7 +9,6 @@ import { useProjStore } from "../stores/proj";
 
 const { ProjData } = storeToRefs(useProjStore());
 const dst = computed(() => ProjData.value);
-
 
 const isDark = useDark();
 const router = useRouter();
@@ -83,22 +82,21 @@ const changeColorIndarkMode = () => {
 
 watch(route, () => {
   changeColorIndarkMode();
- 
 });
 
 watchEffect(() => {
   if (
     route.name == "ArticleView" &&
     ProjData.value &&
-    ProjData.value.dst.length > 0
+    ProjData.value.dst.length > 0 &&
+    document.body.offsetWidth > 768
   ) {
     setTyped(ProjData.value.dst);
-  } else if(curTyped ){
+  } else if (curTyped) {
     curTyped.destroy();
-    document.querySelector('.header-name-type').innerHTML = 'DSt.'
-
+    document.querySelector(".header-name-type").innerHTML = "DSt.";
   }
-    });
+});
 
 watch(isDark, (o, n) => {
   changeColorIndarkMode();
