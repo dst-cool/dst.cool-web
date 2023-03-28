@@ -2,6 +2,7 @@
 import { useDark } from "@vueuse/core";
 import { watch, ref, onMounted } from "vue";
 import { useRouter, useRoute } from "vue-router";
+import Typed from "typed.js";
 
 const isDark = useDark();
 const router = useRouter();
@@ -12,6 +13,49 @@ const rgbRandom = () => {
   const g = Math.floor(Math.random() * 256);
   const b = Math.floor(Math.random() * 256);
   return `rgb(${r},${g},${b})`;
+};
+
+let ary = [
+  "DSteam.",
+  "Design Something.",
+  "Design Store.",
+  "DeSign talents.",
+  "Dancing Sometimes.",
+  "Dringking Sometime.",
+  "Dying Sometimes.",
+];
+let Pre = ["DSt."];
+const shuffle = (List) => {
+  let array = JSON.parse(JSON.stringify(List));
+  let res = [],
+    random;
+  while (array.length > 0) {
+    random = Math.floor(Math.random() * array.length);
+    res.push(array[random]);
+    array.splice(random, 1);
+  }
+  let final = Pre.concat(res).concat(Pre);
+  return final;
+};
+
+const setTyped = () => {
+ new Typed(".header-name-type", {
+    strings: shuffle( ary),
+    typeSpeed: 60,
+    smartBackspace: true,
+    showCursor: false,
+    cursorChar: "|",
+    autoInsertCss: true,
+    backDelay: 700,
+
+    onStart: (self) => {},
+    onStop: (self) => {},
+    onBegin: (self) => {},
+    onComplete: (self) => {
+     
+      // self.reset();
+    },
+  });
 };
 
 onMounted(async () => {
@@ -40,6 +84,9 @@ onMounted(async () => {
       e.style.color = rgbRandom();
     }
   });
+
+
+  setTyped();
 });
 
 onMounted(() => {
@@ -111,7 +158,7 @@ watch(isDark, (o, n) => {
   <div class="container">
     <div class="header">
       <div class="header-name" @click="router.push('/')">
-        <span>DSt.</span>
+        <span  class="header-name-type">DSt.</span>
       </div>
 
       <div class="header-tabs color85">
@@ -138,7 +185,12 @@ watch(isDark, (o, n) => {
   .header-name {
     transition: var(--header-transition--color);
     user-select: none;
+&-type::after{
 
+  content: '1';
+visibility: hidden;
+
+}
     @apply text-6xl 
         flex 
         items-center 

@@ -15,15 +15,6 @@ const { searchByTag } = useProjStore()
 const route = useRoute()
 
 
-const pushTag = (tagId) => {
-    router.push({ path: `/tag`, query: { "tagId": tagId } })
-}
-
-
-const pushClients = (Id) => {
-    router.push({ path: `/clients`, query: { "clientId": Id } })
-
-}
 
 const push = (key, Id) => {
     console.log(Id)
