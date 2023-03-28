@@ -129,7 +129,8 @@ const push = (key, Id) => {
 .proj-info {
   min-width: 0;
   align-self: start;
-    position: sticky;
+  
+  @apply lg:sticky lg:top-10 w-full;
   top: 20vh;
 }
 

@@ -171,7 +171,7 @@ onMounted(() => {
   width: 100%;
   height: 100vh;
   position: relative;
-  z-index: 200;
+  z-index: 2000;
   background-color: hsla(126, 100%, 48%, 0.4);
   padding: 0 1rem;
 
