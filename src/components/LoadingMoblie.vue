@@ -151,6 +151,8 @@ onMounted(() => {
     // transition: height ease-in-out 3s;
     background-color: #C33484;
     padding: 0 1rem;
+    z-index: 2000;
+
     background-image:
 
 
@@ -259,6 +261,7 @@ onMounted(() => {
     top: 35%;
     transform: translateY(-50%);
     height: 200px;
+    
 
 }
 
