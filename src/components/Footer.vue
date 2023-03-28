@@ -44,6 +44,7 @@ import Icon_Dark from "./icons/Icon_Dark.vue";
     &-title {
     }
     &-link {
+      user-select: none;
       @apply flex items-center  justify-center;
       svg {
         @apply mx-2 w-8 md:w-10 h-10 cursor-pointer;
