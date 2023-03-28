@@ -21,7 +21,7 @@ export default defineConfig({
   css: {
    
     postcss: {
-      plugins: [tailwindcss, autoprefixer],
+      plugins: [require('postcss-100vh-fix'),tailwindcss, autoprefixer],
     },
   },
 });
