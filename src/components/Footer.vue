@@ -20,7 +20,7 @@ import Icon_Dark from "./icons/Icon_Dark.vue";
     </div>
     <div class="footer-bottom color55">
       <div class=" ">© 2022 DST. All rights reserved</div>
-      <div class="beian">
+      <div class="footer-bottom-beian">
         <a href="https://beian.miit.gov.cn/"> 粤ICP备2023022463号</a>
       </div>
     </div>
@@ -56,9 +56,9 @@ import Icon_Dark from "./icons/Icon_Dark.vue";
   }
 
   &-bottom{
-    @apply flex items-center justify-between mt-8 mb-4;
+    @apply flex items-center justify-between my-4;
     &-beian{
-      @apply text-sm;
+      @apply  text-xs lg:text-sm;
     }
   }
 }
