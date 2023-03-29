@@ -4,11 +4,10 @@ import Icon_Ins from "./icons/Icon_Ins.vue";
 import Icon_Group from "./icons/Icon_Group.vue";
 import Icon_Email from "./icons/Icon_Email.vue";
 import Icon_Dark from "./icons/Icon_Dark.vue";
-
 </script>
 
 <template>
-  <footer class="footer container ">
+  <footer class="footer container">
     <div class="footer-top color85">
       <div class="footer-top-title">DSt.</div>
       <div class="footer-top-link">
@@ -19,9 +18,10 @@ import Icon_Dark from "./icons/Icon_Dark.vue";
         <Icon_Dark />
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="mt-8 color55">
-        © 2022 DST. All rights reserved
+    <div class="footer-bottom color55">
+      <div class=" ">© 2022 DST. All rights reserved</div>
+      <div class="beian">
+        <a href="https://beian.miit.gov.cn/"> 粤ICP备2023022463号</a>
       </div>
     </div>
   </footer>
@@ -29,18 +29,16 @@ import Icon_Dark from "./icons/Icon_Dark.vue";
 
 <style lang="scss" scoped>
 .footer {
-
   padding-bottom: env(safe-area-inset-bottom);
   @apply pt-2 mt-20;
   &-top {
-    @apply 
-    border-b-2  
+    @apply border-b-2  
     dark:border-white55 border-black55 
     text-3xl 
     md:text-4xl 
     lg:text-5xl
   
-    flex items-center justify-between ;
+    flex items-center justify-between;
     &-title {
     }
     &-link {
@@ -54,6 +52,13 @@ import Icon_Dark from "./icons/Icon_Dark.vue";
       svg:nth-last-child(1) {
         @apply mr-0;
       }
+    }
+  }
+
+  &-bottom{
+    @apply flex items-center justify-between mt-8 mb-4;
+    &-beian{
+      @apply text-sm;
     }
   }
 }

@@ -31,10 +31,7 @@ onBeforeRouteLeave((to, from) => {
 <template>
     <transition name="fade" mode="out-in" appear>
 
-        <!-- <div class="container  flex  flex-col lg:flex-row  lg:justify-between lg:items-start">
-                    <ProjInfo />
-                    <ProjShow />
-                </div> -->
+ 
 
         <div class="container flex flex-col lg:grid grid-cols-4 gap-4  ">
             <ProjInfo />

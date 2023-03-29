@@ -20,11 +20,14 @@
 </template>
 
 <script setup>
-import { useDark, useToggle } from "@vueuse/core";
+import { useDark } from '@vueuse/core';
+
+
+import {  useTheme } from "@/utils/theme.js";
 import anime from "animejs";
 import { onMounted } from "vue";
 const isDark = useDark();
-const toggleDark = useToggle(isDark);
+const {toggleDark} = useTheme()
 
 const moonPath =
   "M170.666667 512a426.666667 426.666667 0 0 1 628.906666-375.893333 21.76 21.76 0 0 1 11.093334 18.773333v5.546667a21.76 21.76 0 0 1-8.106667 17.066666 426.666667 426.666667 0 0 0 0 669.013334 21.76 21.76 0 0 1 8.106667 17.066666v5.546667a21.76 21.76 0 0 1-11.093334 18.773333A426.666667 426.666667 0 0 1 170.666667 512z";
@@ -42,7 +45,7 @@ const darkTimeline = anime.timeline({
 
   update: (anime) => {
     if (anime.progress >= 10) {
-      console.log("anime.progress", anime.isRun);
+ 
       anime.isRun == false ? toggleDark() : "";
 
       anime.isRun = true;
