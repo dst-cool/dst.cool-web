@@ -66,7 +66,7 @@ const push = (key, Id) => {
             ---
           </tr>
           <!-- 设计师们 -->
-          <tr class="dsters" v-for="(item, index2) in ProjData.dsters">
+          <tr class="dsters color55" v-for="(item, index2) in ProjData.dsters">
             <td class="table-item-title">{{ item.duty }}</td>
             <td class="table-item-symbol">|</td>
             <td class="table-item-value" @click="push('designers', item._id)">
