@@ -109,7 +109,7 @@ const push = (key, Id) => {
   table {
     border-collapse: collapse;
     outline: none;
-    font-weight: 600;
+   
   }
   tr {
     td {

@@ -40,16 +40,7 @@ onBeforeRouteLeave((to, from) => {
 
             <ProjInfoBottom />
 
-            <table>
-                <tr>
-                    <td class="color55">12color 中文</td>
-                    <td class="color55">12color 中文</td>
-                    <td class="color55"> 颜色问题测试中</td>
-                    <td class="color55">12color 中文</td>
-
-
-                </tr>
-            </table>
+      
 
         </div>
 

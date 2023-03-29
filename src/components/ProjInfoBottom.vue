@@ -106,8 +106,8 @@ const push = (key, Id) => {
   table {
     border-collapse: collapse;
     outline: none;
-    font-weight: 600;
-    color: rgba(0,0,0,0.5);
+
+
   }
   tr {
     td {
@@ -121,8 +121,8 @@ const push = (key, Id) => {
    
 
       span {
-        @apply py-1  cursor-pointer mx-1 dark:text-white55  ;
-  // color: rgba(0,0,0,0.3);        
+        @apply py-1  cursor-pointer mx-1   ;
+     
       }
     }
   }
