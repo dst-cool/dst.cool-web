@@ -47,12 +47,12 @@ const handleClick = (tagId) => {
 
 
         <div class="card-des ">
-            <div class=" mt-3 md:mt-6 text-base md:text-3xl text-black85 dark:text-white85 cursor-pointer" @click="push()">
+            <div class=" mt-3 md:mt-6 text-base md:text-3xl color85 cursor-pointer" @click="push()">
                 {{ projObj.title }}
             </div>
 
             <div
-                class="card-tags mt-0 md:mt-0 text-sm md:text-lg text-black55 dark:text-white55 flex justify-start items-center flex-wrap">
+                class="card-tags mt-0 md:mt-0 text-sm md:text-lg color55 flex justify-start items-center flex-wrap">
                 <p v-for=" (tag, index) in   projObj.clientsType" :key="index"
                     class=" overflow-hidden  flex justify-start items-center flex-nowrap flex-shrink-0">
 
@@ -95,7 +95,7 @@ const handleClick = (tagId) => {
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .card {
     user-select: none;
     overflow: hidden;

@@ -25,10 +25,7 @@ const push = (key, Id) => {
 
 <template>
   <div v-if="ProjData" class="projectsInfo">
-
-
-  
-
+    
     <div class="projectsInfo-info color55">
       <div class="table">
         <table>
@@ -43,12 +40,12 @@ const push = (key, Id) => {
 
           <!-- 默认展示信息 -->
           <tr v-for="(tag, index) in infoList" :key="name + index">
-            <td class="table-item-title">{{ tag }}</td>
+            <td class="table-item-title ">{{ tag }}</td>
             <td class="table-item-symbol">|</td>
 
-            <td class="table-item-value">
+            <td class="table-item-value ">
               <span
-                class="table-item-value-span"
+                class="table-item-value-span "
                 v-for="(obj, index) in ProjData[tag] || []"
                 :key="obj.name + index"
                 @click="push(tag, obj._id)"
@@ -62,7 +59,11 @@ const push = (key, Id) => {
             ---
           </tr>
           <!-- 设计师们 -->
-          <tr class="dsters" v-for="(item, index2) in ProjData.dsters">
+          <tr
+            class="dsters"
+            v-for="(item, index2) in ProjData.dsters"
+            :key="index2"
+          >
             <td class="table-item-title">{{ item.duty }}</td>
             <td class="table-item-symbol">|</td>
             <td class="table-item-value" @click="push('designers', item._id)">
@@ -94,7 +95,7 @@ const push = (key, Id) => {
   }
 
   &-info {
-    @apply   overflow-hidden;
+    @apply overflow-hidden;
     @apply text-base lg:text-lg;
     @apply justify-center items-start;
     @apply lg:hidden lg:items-start lg:justify-start;
@@ -106,6 +107,7 @@ const push = (key, Id) => {
     border-collapse: collapse;
     outline: none;
     font-weight: 600;
+    color: rgba(0,0,0,0.5);
   }
   tr {
     td {
@@ -116,9 +118,11 @@ const push = (key, Id) => {
     td:nth-last-child(1) {
       white-space: pre-wrap;
       word-break: break-word;
+   
 
       span {
-        @apply py-1  cursor-pointer mx-1;
+        @apply py-1  cursor-pointer mx-1 dark:text-white55  ;
+  // color: rgba(0,0,0,0.3);        
       }
     }
   }
