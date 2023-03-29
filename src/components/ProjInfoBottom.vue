@@ -39,50 +39,71 @@ const push = (key, Id) => {
 
         <div
             class=" text-black55 dark:text-white55 proj-info-other flex justify-center items-start lg:items-start lg:justify-start text-base lg:text-lg">
-            <div class="proj-info-other-title text-balck55  dark:text-white55 flex  flex-col items-start  ">
-             
-                <div class="proj-info-other-title-item " >
-                    time
-                </div>
-                <div class="proj-info-other-title-item " v-for=" (item, index) in  infoList" :key="index">
-                    {{ item }}
-                </div>
-                <div class="proj-info-other-title-item " v-for=" (item, index) in  ProjData.dsters" :key="index">
-                    {{ item.duty }}
-                </div>
+            <div class="table">
+        <table>
+          <!-- 时间 -->
+          <tr>
+            <td class="table-item">time</td>
+            <td class="table-item-symbol">|</td>
+            <td class="table-item">{{ ProjData.time }}</td>
+          </tr>
 
-            </div>
+          <!-- 客户 -->
+          <tr>
+            <td class="table-item">clients</td>
+            <td class="table-item-symbol">|</td>
+            <td class="table-item">
+              <span
+                class="cursor-pointer"
+                v-for="(item, index2) in ProjData.clients"
+                @click="push('clients', item._id)"
+              >
+                {{ item.name }}
+              </span>
 
-            <div class="proj-info-other-title text-black55  dark:text-white55 flex  flex-col items-start  ">
-                <div class="proj-info-other-title-item "  >
-                    &nbsp &nbsp| &nbsp &nbsp
-                </div>
-                <div class="proj-info-other-title-item " v-for=" (item, index) in  infoList" :key="index">
-                    &nbsp &nbsp| &nbsp &nbsp
-                </div>
-                <div class="proj-info-other-title-item " v-for=" (item, index) in  ProjData.dsters" :key="index">
-                    &nbsp &nbsp| &nbsp &nbsp
-                </div>
-            </div>
+       
+            </td>
+          </tr>
 
-            <div class="proj-info-other-items   flex  flex-col items-start ">
-                <div class="proj-info-other-title-item  "  >
-                    {{ ProjData.time }}
-                </div>
-                <div class="proj-info-other-item " v-for=" (key, index) in infoList" :key="index">
-                    <span class=" cursor-pointer" :class="index2 > 0 ? 'pl-2' : ''"
-                        v-for=" (item, index2) in ProjData[key] " @click="push(key, item._id)">
-                        {{ item.name }}
-                    </span>
-                </div>
+          <!-- //类型 -->
+          <tr>
+            <td class="table-item">clientsType</td>
+            <td class="table-item-symbol">|</td>
+            <td class="table-item">
+              <span
+                class="cursor-pointer"
+                v-for="(item, index2) in ProjData.clientsType"
+                @click="push('clientsType', item._id)"
+              >
+                {{ item.name }}
+              </span>
+            </td>
+          </tr>
 
-
-                <div class="proj-info-other-title-item cursor-pointer " v-for=" (item, index) in  ProjData.dsters"
-                    :key="index" @click="push('designers', item._id)">
-                    {{ item.name }}
-                </div>
-            </div>
-
+          <!-- //服务 -->
+          <tr>
+            <td class="table-item">service</td>
+            <td class="table-item-symbol">|</td>
+            <td class="table-item">
+              <span
+                class="cursor-pointer"
+                v-for="(item, index2) in ProjData.service"
+                @click="push('service', item._id)"
+              >
+                {{ item.name }}
+              </span>
+            </td>
+          </tr>
+          <tr class="divider"></tr>
+          <tr class="dsters" v-for="(item, index2) in ProjData.dsters">
+            <td class="table-item">{{ item.duty }}</td>
+            <td class="table-item-symbol">|</td>
+            <td class="table-item" @click="push('designers',item._id)">
+              {{ item.name }}
+            </td>
+          </tr>
+        </table>
+      </div>
 
         </div>
 
@@ -90,7 +111,7 @@ const push = (key, Id) => {
 </template>
 
 
-<style lang="scss">
+<style lang="scss" scoped>
 .proj-info {
     min-width: 0;
 
@@ -99,32 +120,40 @@ const push = (key, Id) => {
 .proj-info .info {
     line-height: 180%;
 }
+.table {
+  tr {
 
-.proj-info-other-item {}
-
-.over-inner {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 4fr 1fr 4fr;
-    grid-template-rows: 1fr;
-    justify-content: start;
-    align-items: center;
-
-    // width: 100%;
-    // margin: 0 auto;
-    // display: flex;
-    // justify-content: start;
-    // align-items: center;
-    .info-title {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
+ 
+    td{
+      vertical-align: top;
+      text-indent: 0px;
+      text-align: left;
     }
-
-    .sign {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+    td:nth-last-child(1) {
+      white-space: pre-wrap;
+      word-break: break-word;
+      span{
+        @apply pr-2
+      }
     }
+    
+
+  }
+
+  .dsters {
+    padding-top: 20px;
+  }
+  &-item {
+    &-symbol {
+      vertical-align: center;
+      width: 10px;
+      @apply px-2 ;
+    }
+  }
+}
+
+.divider{
+  color: transparent;
+  visibility: hidden;
 }
 </style>

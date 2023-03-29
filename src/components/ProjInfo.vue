@@ -42,24 +42,21 @@ const push = (key, Id) => {
       {{ ProjData.text }}
     </div>
 
-    <div
+    <!-- <div
       class="lg:flex hidden text-black55 dark:text-white55 proj-info-other justify-center items-start lg:items-start lg:justify-start text-base lg:text-lg overflow-hidden"
     >
       <div
         class="proj-info-other-title text-balck55 dark:text-white55 flex flex-col items-start"
       >
-        <div class="proj-info-other-title-item ">time</div>
+        <div class="table-item">time</div>
 
-        <div
-          class="proj-info-other-title-item"
-          v-for="(item, index) in infoList"
-          :key="index"
-        >
+        <div class="table-item" v-for="(item, index) in infoList" :key="index">
           {{ item }}
         </div>
 
         <div
-          class="proj-info-other-title-item dsters" :data-index="index"
+          class="table-item dsters"
+          :data-index="index"
           v-for="(item, index) in ProjData.dsters"
           :key="index"
         >
@@ -70,16 +67,13 @@ const push = (key, Id) => {
       <div
         class="proj-info-other-title text-black55 px-3 dark:text-white55 flex flex-col items-center justify-center"
       >
-        <div class="proj-info-other-title-item">|</div>
-        <div
-          class="proj-info-other-title-item"
-          v-for="(item, index) in infoList"
-          :key="index"
-        >
+        <div class="table-item">|</div>
+        <div class="table-item" v-for="(item, index) in infoList" :key="index">
           |
         </div>
         <div
-          class="proj-info-other-title-item dsters" :data-index="index"
+          class="table-item dsters"
+          :data-index="index"
           v-for="(item, index) in ProjData.dsters"
           :key="index"
         >
@@ -88,7 +82,7 @@ const push = (key, Id) => {
       </div>
 
       <div class="proj-info-other-items flex flex-col items-start">
-        <div class="proj-info-other-title-item">
+        <div class="table-item">
           {{ ProjData.time }}
         </div>
 
@@ -109,19 +103,92 @@ const push = (key, Id) => {
         <div></div>
 
         <div
-          class="proj-info-other-title-item dsters cursor-pointer"  :data-index="index"
+          class="table-item dsters cursor-pointer"
+          :data-index="index"
           v-for="(item, index) in ProjData.dsters"
           :key="index"
           @click="push('designers', item._id)"
         >
           {{ item.name }}
         </div>
+
+        <span>123</span>
+        <span>123</span>
+
+        <span>123</span>
+        <span>123</span>
+      </div>
+    </div> -->
+
+
+    <div
+      class="lg:flex hidden text-black55 dark:text-white55 proj-info-other justify-center items-start lg:items-start lg:justify-start text-base lg:text-lg overflow-hidden"
+    >
+      <div class="table">
+        <table>
+          <!-- 时间 -->
+          <tr>
+            <td class="table-item">time</td>
+            <td class="table-item-symbol">|</td>
+            <td class="table-item">{{ ProjData.time }}</td>
+          </tr>
+
+          <!-- 客户 -->
+          <tr>
+            <td class="table-item">clients</td>
+            <td class="table-item-symbol">|</td>
+            <td class="table-item">
+              <span
+                class="cursor-pointer"
+                v-for="(item, index2) in ProjData.clients"
+                @click="push('clients', item._id)"
+              >
+                {{ item.name }}
+              </span>
+
+            </td>
+          </tr>
+
+          <!-- //类型 -->
+          <tr>
+            <td class="table-item">clientsType</td>
+            <td class="table-item-symbol">|</td>
+            <td class="table-item">
+              <span
+                class="cursor-pointer"
+                v-for="(item, index2) in ProjData.clientsType"
+                @click="push('clientsType', item._id)"
+              >
+                {{ item.name }}
+              </span>
+            </td>
+          </tr>
+
+          <!-- //服务 -->
+          <tr>
+            <td class="table-item">service</td>
+            <td class="table-item-symbol">|</td>
+            <td class="table-item">
+              <span
+                class="cursor-pointer"
+                v-for="(item, index2) in ProjData.service"
+                @click="push('service', item._id)"
+              >
+                {{ item.name }}
+              </span>
+            </td>
+          </tr>
+<tr class="divider">  ---</tr>
+          <tr class="dsters" v-for="(item, index2) in ProjData.dsters">
+            <td class="table-item">{{ item.duty }}</td>
+            <td class="table-item-symbol">|</td>
+            <td class="table-item" @click="push('designers',item._id)">
+              {{ item.name }}
+            </td>
+          </tr>
+        </table>
       </div>
     </div>
-
-
-
-    
   </div>
 </template>
 
@@ -129,7 +196,6 @@ const push = (key, Id) => {
 .proj-info {
   min-width: 0;
   align-self: start;
-  
   @apply lg:sticky lg:top-10 w-full;
   top: 20vh;
 }
@@ -138,52 +204,40 @@ const push = (key, Id) => {
   line-height: 180%;
 }
 
-.dsters[data-index="0"]{
-  @apply  mt-4;
+.table {
+  tr {
+
+ 
+    td{
+      vertical-align: top;
+      text-indent: 0px;
+      text-align: left;
+    }
+    td:nth-last-child(1) {
+      white-space: pre-wrap;
+      word-break: break-word;
+      span{
+        @apply pr-2
+      }
+    }
+    
+
+  }
+
+  .dsters {
+    padding-top: 20px;
+  }
+  &-item {
+    &-symbol {
+      vertical-align: center;
+      width: 10px;
+      @apply px-2 ;
+    }
+  }
 }
 
-.over-inner {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 4fr 1fr 4fr;
-  grid-template-rows: 1fr;
-  justify-content: start;
-  align-items: center;
-
-  // width: 100%;
-  // margin: 0 auto;
-  // display: flex;
-  // justify-content: start;
-  // align-items: center;
-  .info-title {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-
-  .sign {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.ellipsis {
-  display: inline-flex;
-  width: 100%;
-  overflow: hidden;
-  justify-self: start;
-  align-items: center;
-  flex-wrap: nowrap;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-
-  span {
-    display: inline-block;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.divider{
+  color: transparent;
+  visibility: hidden;
 }
 </style>
