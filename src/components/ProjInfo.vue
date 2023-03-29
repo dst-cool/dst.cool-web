@@ -1,15 +1,13 @@
 <script setup>
 import { storeToRefs } from "pinia";
-import { computed, ref, reactive, onBeforeMount } from "vue";
-import { useRoute, useRouter } from "vue-router";
-
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 import { useProjStore } from "../stores/proj";
+
 const router = useRouter();
-
 const infoList = ref(["clients", "clientsType", "service"]);
-const { ProjData } = storeToRefs(useProjStore());
 
-const route = useRoute();
+const { ProjData } = storeToRefs(useProjStore());
 
 const push = (key, Id) => {
   console.log(Id);
@@ -26,164 +24,53 @@ const push = (key, Id) => {
 </script>
 
 <template>
-  <div
-    v-if="ProjData"
-    class="lg:col-span-1 proj-info flex flex-col justify-center items-start lg:flex"
-  >
-    <div
-      class="flex justify-start text-black55 proj-info-title dark:text-white55 lg:text-3xl text-3xl lg:mb-10 mb-4"
-    >
+  <div v-if="ProjData" class="projectsInfo">
+    <div class="projectsInfo-title color85">
       {{ ProjData.title }}
     </div>
 
-    <div
-      class="font2 info text-black55 dark:text-white55 lg:mb-5 mb-0 text-sm lg:text-base"
-    >
+    <div class="projectsInfo-text font2 color55">
       {{ ProjData.text }}
     </div>
 
-    <!-- <div
-      class="lg:flex hidden text-black55 dark:text-white55 proj-info-other justify-center items-start lg:items-start lg:justify-start text-base lg:text-lg overflow-hidden"
-    >
-      <div
-        class="proj-info-other-title text-balck55 dark:text-white55 flex flex-col items-start"
-      >
-        <div class="table-item">time</div>
-
-        <div class="table-item" v-for="(item, index) in infoList" :key="index">
-          {{ item }}
-        </div>
-
-        <div
-          class="table-item dsters"
-          :data-index="index"
-          v-for="(item, index) in ProjData.dsters"
-          :key="index"
-        >
-          {{ item.duty }}
-        </div>
-      </div>
-
-      <div
-        class="proj-info-other-title text-black55 px-3 dark:text-white55 flex flex-col items-center justify-center"
-      >
-        <div class="table-item">|</div>
-        <div class="table-item" v-for="(item, index) in infoList" :key="index">
-          |
-        </div>
-        <div
-          class="table-item dsters"
-          :data-index="index"
-          v-for="(item, index) in ProjData.dsters"
-          :key="index"
-        >
-          |
-        </div>
-      </div>
-
-      <div class="proj-info-other-items flex flex-col items-start">
-        <div class="table-item">
-          {{ ProjData.time }}
-        </div>
-
-        <div
-          class="proj-info-other-item ellipsis"
-          v-for="(key, index) in infoList"
-          :key="index"
-        >
-          <span
-            class="cursor-pointer"
-            :class="index2 > 0 ? 'pl-2' : ''"
-            v-for="(item, index2) in ProjData[key]"
-            @click="push(key, item._id)"
-          >
-            {{ item.name }}
-          </span>
-        </div>
-        <div></div>
-
-        <div
-          class="table-item dsters cursor-pointer"
-          :data-index="index"
-          v-for="(item, index) in ProjData.dsters"
-          :key="index"
-          @click="push('designers', item._id)"
-        >
-          {{ item.name }}
-        </div>
-
-        <span>123</span>
-        <span>123</span>
-
-        <span>123</span>
-        <span>123</span>
-      </div>
-    </div> -->
-
-
-    <div
-      class="lg:flex hidden text-black55 dark:text-white55 proj-info-other justify-center items-start lg:items-start lg:justify-start text-base lg:text-lg overflow-hidden"
-    >
+    <div class="projectsInfo-info color55">
       <div class="table">
         <table>
           <!-- 时间 -->
-          <tr>
-            <td class="table-item">time</td>
+          <tr v-if="ProjData.time">
+            <td class="table-item-title">time</td>
             <td class="table-item-symbol">|</td>
-            <td class="table-item">{{ ProjData.time }}</td>
-          </tr>
-
-          <!-- 客户 -->
-          <tr>
-            <td class="table-item">clients</td>
-            <td class="table-item-symbol">|</td>
-            <td class="table-item">
-              <span
-                class="cursor-pointer"
-                v-for="(item, index2) in ProjData.clients"
-                @click="push('clients', item._id)"
-              >
-                {{ item.name }}
-              </span>
-
+            <td class="table-item-value">
+              <span>{{ ProjData.time }}</span>
             </td>
           </tr>
 
-          <!-- //类型 -->
-          <tr>
-            <td class="table-item">clientsType</td>
+          <!-- 默认展示信息 -->
+          <tr v-for="(tag, index) in infoList" :key="name + index">
+            <td class="table-item-title">{{ tag }}</td>
             <td class="table-item-symbol">|</td>
-            <td class="table-item">
+
+            <td class="table-item-value">
               <span
-                class="cursor-pointer"
-                v-for="(item, index2) in ProjData.clientsType"
-                @click="push('clientsType', item._id)"
+                class="table-item-value-span"
+                v-for="(obj, index) in ProjData[tag] || []"
+                :key="obj.name + index"
+                @click="push(tag, obj._id)"
               >
-                {{ item.name }}
+                {{ obj.name }}
               </span>
             </td>
           </tr>
 
-          <!-- //服务 -->
-          <tr>
-            <td class="table-item">service</td>
-            <td class="table-item-symbol">|</td>
-            <td class="table-item">
-              <span
-                class="cursor-pointer"
-                v-for="(item, index2) in ProjData.service"
-                @click="push('service', item._id)"
-              >
-                {{ item.name }}
-              </span>
-            </td>
+          <tr class="divider">
+            ---
           </tr>
-<tr class="divider">  ---</tr>
+          <!-- 设计师们 -->
           <tr class="dsters" v-for="(item, index2) in ProjData.dsters">
-            <td class="table-item">{{ item.duty }}</td>
+            <td class="table-item-title">{{ item.duty }}</td>
             <td class="table-item-symbol">|</td>
-            <td class="table-item" @click="push('designers',item._id)">
-              {{ item.name }}
+            <td class="table-item-value" @click="push('designers', item._id)">
+              <span> {{ item.name }}</span>
             </td>
           </tr>
         </table>
@@ -193,22 +80,39 @@ const push = (key, Id) => {
 </template>
 
 <style lang="scss" scoped>
-.proj-info {
-  min-width: 0;
+.projectsInfo {
   align-self: start;
-  @apply lg:sticky lg:top-10 w-full;
-  top: 20vh;
+  top: 10vh;
+  @apply w-full   flex flex-col justify-center items-start;
+  @apply lg:sticky lg:col-span-1;
+
+  &-title {
+    @apply flex justify-start;
+    @apply mb-4 lg:mb-10;
+    @apply text-3xl lg:text-3xl;
+  }
+
+  &-text {
+    @apply lg:mb-5 mb-0 text-sm lg:text-base;
+    line-height: 180%;
+  }
+
+  &-info {
+    @apply hidden  overflow-hidden;
+    @apply text-base lg:text-lg;
+    @apply justify-center items-start;
+    @apply lg:flex lg:items-start lg:justify-start;
+  }
 }
 
-.proj-info .info {
-  line-height: 180%;
-}
-
-.table {
+.projectsInfo-info .table {
+  table {
+    border-collapse: collapse;
+    outline: none;
+    font-weight: 600;
+  }
   tr {
-
- 
-    td{
+    td {
       vertical-align: top;
       text-indent: 0px;
       text-align: left;
@@ -216,27 +120,23 @@ const push = (key, Id) => {
     td:nth-last-child(1) {
       white-space: pre-wrap;
       word-break: break-word;
-      span{
-        @apply pr-2
+
+      span {
+        @apply py-1  cursor-pointer mx-1;
       }
     }
-    
-
   }
 
-  .dsters {
-    padding-top: 20px;
-  }
   &-item {
     &-symbol {
       vertical-align: center;
       width: 10px;
-      @apply px-2 ;
+      @apply px-2;
     }
   }
 }
 
-.divider{
+.divider {
   color: transparent;
   visibility: hidden;
 }

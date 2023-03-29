@@ -21,7 +21,7 @@ import Icon_Dark from "./icons/Icon_Dark.vue";
     <div class="footer-bottom color55">
       <div class=" ">© 2022 DST. All rights reserved</div>
       <div class="footer-bottom-beian">
-        <a href="https://beian.miit.gov.cn/"> 粤ICP备2023022463号</a>
+        <a href="https://beian.miit.gov.cn/" target="_blank"> 粤ICP备2023022463号</a>
       </div>
     </div>
   </footer>

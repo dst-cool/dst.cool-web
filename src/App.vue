@@ -22,9 +22,12 @@ const isMobile = mobile();
 
     <Footer />
   </main>
-</template>
+</template >
 
 <style scoped>
+
+
+
 .main {
   min-height: 100vh;
   padding: 0 1rem;
